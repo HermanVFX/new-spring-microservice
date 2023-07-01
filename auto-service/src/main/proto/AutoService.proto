@@ -1,0 +1,28 @@
+syntax = "proto3";
+package auto;
+
+message AutoRequest {
+  string vin = 1;
+  string state_number = 2;
+}
+
+message AutoResponse {
+  string id = 1;
+  string vin = 2;
+  string state_number = 3;
+}
+
+message Id {
+  string id = 1;
+}
+
+message DeletedResponse {
+  bool isDeleted = 1;
+}
+
+service AutoService {
+  rpc createAuto(AutoRequest) returns (AutoResponse);
+  rpc getAutoById(Id) returns (AutoResponse);
+  rpc updateAuto(Id) returns (AutoResponse);
+  rpc deleteAuto(Id) returns (DeletedResponse);
+}
